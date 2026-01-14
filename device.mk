@@ -22,6 +22,9 @@ TARGET_SCREEN_HEIGHT := 3216
 TARGET_SCREEN_WIDTH := 1440
 
 # Display
+$(call soong_config_set,qtidisplay,pxlw_sm8650_vendor_namespace,vendor/oneplus/waffle)
+$(call soong_config_set_bool,qtidisplay,pxlw_hw_iris7,true)
+
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/display/displayconfig.xml:$(TARGET_COPY_OUT_VENDOR)/etc/displayconfig/display_id_4630946450791512195.xml
 
