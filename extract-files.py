@@ -37,13 +37,10 @@ lib_fixups: lib_fixups_user_type = {
     (
         'com.qti.sensor.lyt808',
         'libarcsoft_triple_sat',
-        'libarcsoft_triple_zoomtranslator',
-        'libdualcam_optical_zoom_control',
         'libdualcam_video_optical_zoom',
         'libhwconfigurationutil',
         'libpwirisfeature',
         'libpwirishalwrapper',
-        'libtriplecam_optical_zoom_control',
         'libtriplecam_video_optical_zoom',
         'vendor.pixelworks.hardware.display-V2-ndk',
         'vendor.pixelworks.hardware.display@1.0',
@@ -68,20 +65,8 @@ blob_fixups: blob_fixups_user_type = {
     ): blob_fixup()
         .regex_replace('(NXPLOG_.*_LOGLEVEL)=0x03', '\\1=0x02')
         .regex_replace('NFC_DEBUG_ENABLED=1', 'NFC_DEBUG_ENABLED=0'),
-    'odm/lib64/libAlgoProcess.so': blob_fixup()
-        .replace_needed('android.hardware.graphics.common-V3-ndk.so', 'android.hardware.graphics.common-V7-ndk.so')
-        .replace_needed('android.hardware.graphics.common-V4-ndk.so', 'android.hardware.graphics.common-V7-ndk.so'),
-    'odm/lib64/libarcsoft_high_dynamic_range_v4.so': blob_fixup()
-        .clear_symbol_version('remote_handle_close')
-        .clear_symbol_version('remote_handle_invoke')
-        .clear_symbol_version('remote_handle_open')
-        .clear_symbol_version('remote_register_buf')
-        .clear_symbol_version('remote_register_buf_attr'),
     (
-        'odm/lib64/libCOppLceTonemapAPI.so',
         'odm/lib64/libSuperRaw.so',
-        'odm/lib64/libYTCommon.so',
-        'odm/lib64/libyuv2.so',
     ): blob_fixup()
         .replace_needed('libstdc++.so', 'libstdc++_vendor.so'),
     (
@@ -94,10 +79,8 @@ blob_fixups: blob_fixups_user_type = {
         .replace_needed('libtinyxml2.so', 'libtinyxml2-v34.so'),
     (
         'odm/lib64/libEIS.so',
-        'odm/lib64/libEISLive.so',
         'odm/lib64/libHIS.so',
         'odm/lib64/libOGLManager.so',
-        'odm/lib64/libOPAlgoCamFaceBeautyCap.so',
     ): blob_fixup()
         .clear_symbol_version('AHardwareBuffer_allocate')
         .clear_symbol_version('AHardwareBuffer_describe')
